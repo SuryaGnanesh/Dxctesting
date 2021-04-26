@@ -35,3 +35,20 @@ monday
 TO_CHAR(
 --------
 06-05-21
+
+
+
+ create table stock(stock_id int,stock_name varchar(20),stock_symbol varchar(20),stock_price int,stock_type varchar(10));
+
+Table created.
+
+
+
+ create table sales(sales_id int,name varchar(20),prodct varchar(20),quantity int,price int);
+
+Table created.
+
+
+
+
+
