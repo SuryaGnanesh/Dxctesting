@@ -1,0 +1,37 @@
+ select to_char(sysdate,'dd-mm-yy hh:mi:ss') from dual;
+
+TO_CHAR(SYSDATE,'
+-----------------
+26-04-21 03:19:24
+
+
+
+select sysdate from dual;
+
+SYSDATE
+---------
+26-APR-21
+
+
+
+ select to_char(sysdate,'dd-mm-yyyy') from dual;
+
+TO_CHAR(SY
+----------
+26-04-2021
+
+
+
+ select to_char(sysdate,'day') from dual;
+
+TO_CHAR(SYSDATE,'DAY')
+------------------------------------
+monday
+
+
+
+ select to_char(sysdate+10,'dd-mm-yy') from dual;
+
+TO_CHAR(
+--------
+06-05-21
