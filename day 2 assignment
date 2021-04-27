@@ -1,18 +1,18 @@
-> create table employee
+> 
+Table created.
+
+create table employee
   2  (
   3  empfname varchar(20),
   4  empmname varchar(20),
   5  emplastname varchar(20),
   6  empage int check(empage>0 and empage<50),
   7  empcity varchar(20) check(upper(empcity) like 'B%'),
-  8  empdesignation varchar(20),
-  9  empid  varchar(5),
+  8  empdesignation varchar(20) check(empdesignation like '%Manager'),
+  9  empid  varchar(20) check(length(empid)=5),
  10  empDOB date,
  11  constraints my_pk primary key(empid)
  12  );
-
-Table created.
-
 
 
 
