@@ -1,0 +1,132 @@
+> create table employee
+  2  (
+  3  empfname varchar(20),
+  4  empmname varchar(20),
+  5  emplastname varchar(20),
+  6  empage int check(empage>0 and empage<50),
+  7  empcity varchar(20) check(upper(empcity) like 'B%'),
+  8  empdesignation varchar(20),
+  9  empid  varchar(5),
+ 10  empDOB date,
+ 11  constraints my_pk primary key(empid)
+ 12  );
+
+Table created.
+
+
+
+
+
+SQL> insert into employee values('Sachin','Ramesh','Tendulkar',47,'Bhopal','Manager','emp01',to_date('24/04/1974','dd/mm/yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('Siva','Ram','Kapoor',36,'Bangalore','Sales Manager','emp02',to_date('21/08/1984','dd/mm/yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('Raj','Kumar','Sharma',29,'Bijapur','Product Manager','emp03',to_date('02/07/1991','dd/mm/yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('Ravi','Kiran','Shastri',24,'Bhuvaneswar','Assistant Manager','emp04',to_date('11/11/1996','dd/mm/yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('Virat','Kumar','Kohli',22,'Bangalore','Account Manager','emp05',to_date('23/12/1998','dd/mm/yyyy'));
+
+1 row created.
+
+
+
+
+
+ select * from employee;
+
+EMPFNAME             EMPMNAME             EMPLASTNAME              EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Sachin               Ramesh               Tendulkar                    47
+Bhopal               Manager              emp01 24-APR-74
+
+Siva                 Ram                  Kapoor                       36
+Bangalore            Sales Manager        emp02 21-AUG-84
+
+Raj                  Kumar                Sharma                       29
+Bijapur              Product Manager      emp03 02-JUL-91
+
+
+EMPFNAME             EMPMNAME             EMPLASTNAME              EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Ravi                 Kiran                Shastri                      24
+Bhuvaneswar          Assistant Manager    emp04 11-NOV-96
+
+Virat                Kumar                Kohli                        22
+Bangalore            Account Manager      emp05 23-DEC-98
+
+
+
+
+
+
+
+ update employee set empcity='Bijapur' where empid='emp05';
+
+1 row updated.
+
+
+delete from employee where empid='emp04';
+
+1 row deleted.
+
+
+
+commit;
+
+Commit complete.
+
+SQL> delete from employee;
+
+4 rows deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from employee;
+
+EMPFNAME             EMPMNAME             EMPLASTNAME              EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Sachin               Ramesh               Tendulkar                    47
+Bhopal               Manager              emp01 24-APR-74
+
+Siva                 Ram                  Kapoor                       36
+Bangalore            Sales Manager        emp02 21-AUG-84
+
+Raj                  Kumar                Sharma                       29
+Bijapur              Product Manager      emp03 02-JUL-91
+
+
+EMPFNAME             EMPMNAME             EMPLASTNAME              EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Virat                Kumar                Kohli                        22
+Bijapur              Account Manager      emp05 23-DEC-98
+
+
+
+
+ select substr(empfname,1,1)||'.'||substr(empmname,1,1)||'.'||emplastname as "Employee name",to_char(empDOB,'dd-mm-yyyy') from employee;
+
+Employee name                  TO_CHAR(EM
+------------------------------ ----------
+S.R.Tendulkar                  24-04-1974
+S.R.Kapoor                     21-08-1984
+R.K.Sharma                     02-07-1991
+V.K.Kohli                      23-12-1998
