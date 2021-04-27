@@ -1,0 +1,54 @@
+ create table schedule
+  2      (
+  3      day varchar(5),
+  4      sess int,
+  5      faculty varchar(10),
+  6      sem varchar(5),
+  7      room varchar(5),
+  8      subject varchar(10),
+  9      constraints mycomp1 unique(day,sess,faculty),
+ 10      constraints mycomp2 unique(day,sess,sem),
+ 11      constraints mycomp3 unique(day,sess,room)
+ 12      );
+
+Table created.
+
+SQL> insert into schedule values('mon',1,'john','7th','r1','java');
+
+1 row created.
+
+SQL> insert into schedule values('mon',1,'john','5th','r2','testing');
+insert into schedule values('mon',1,'john','5th','r2','testing')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (GNANESH.MYCOMP1) violated
+
+
+SQL> insert into schedule values('mon',1,'cena','7th','r3','dbms');
+insert into schedule values('mon',1,'cena','7th','r3','dbms')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (GNANESH.MYCOMP2) violated
+
+
+SQL> insert into schedule values('mon',1,'rock','4th','r1','ds');
+insert into schedule values('mon',1,'rock','4th','r1','ds')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (GNANESH.MYCOMP3) violated
+
+
+SQL> insert into schedule values('mon',1,'john','7th','r1','java');
+insert into schedule values('mon',1,'john','7th','r1','java')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (GNANESH.MYCOMP1) violated
+
+
+SQL> insert into schedule values('tue',1,'john','7th','r1','java');
+
+1 row created.
+
+SQL> insert into schedule values('mon',2,'john','7th','r1','java');
+
+1 row created.
