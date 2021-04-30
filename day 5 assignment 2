@@ -1,0 +1,83 @@
+create a function to   check 2 given chars
+are equal or not irrespective of the case
+
+Signature of function is as follows:
+boolean isEqual(char c1 , char c2)
+
+Example ->  A , a or a, A or A, A or a , a should return ture else return false
+
+package dxctesting;
+
+public class CharComp {
+	boolean isEqual(char c1,char c2)
+	{
+		if(c1-c2==32 || c2-c1==32 || c1-c2==0 || c2-c1==0)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		CharComp c = new CharComp();
+		System.out.println(c.isEqual('a','A'));
+
+	}
+
+}
+
+
+output :
+true
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-> create a function to   check 2 given Strings
+are equal or not irrespective of the case
+
+Signature of function is as follows:
+boolean isEqual(String str1 , String str2)
+
+Example -> Hello , HELLO is any case should return ture else return false  
+
+
+package dxctesting;
+
+public class StrComp {
+	boolean isEquals(String st1,String st2)
+	{
+		int i;
+		int cnt=0;
+		if(st1.length()==st2.length())
+		{
+			char[] ch1=st1.toCharArray();
+			char[] ch2=st2.toCharArray();
+			for(i=0;i<ch1.length;i++)
+			{
+				if(ch1[i]-ch2[i]==32 || ch2[i]-ch1[i]==32 || ch1[i]-ch2[i]==0 || ch2[i]-ch1[i]==0)
+				{
+					cnt+=1;
+				}
+			}
+			if(cnt==st1.length())
+			{
+				return true;
+			}
+			return false;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		StrComp st = new StrComp();
+		System.out.println(st.isEquals("HELLO","hello"));
+
+	}
+
+}
+
+output :
+true
