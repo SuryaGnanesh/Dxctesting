@@ -1,0 +1,134 @@
+> create a function to check the given string contains UPPER case char or not
+Signature of function is as follows:
+
+String hasUpper(String data)
+{
+}
+return yes if it contans upper case char else return no
+
+package dxctesting;
+
+public class StrFun {
+	String hasUpper(String data)
+	{
+		char[] ch=data.toCharArray();
+		for(char a:ch) {
+			if(a>=65 && a<=90)
+			{
+				return("YES");
+			}
+		}
+		return("NO");
+	}
+	public static void main(String[] args) {
+		
+		StrFun s = new StrFun();
+		System.out.println(args[0]+"-->"+s.hasUpper(args[0]));
+	
+	}
+  
+  output :
+  Aditya-->YES
+  hello-->NO
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  -> create a function to check the given string contains number   or not
+  
+  public class NumFunc {
+	String hasNum(String data)
+	{
+		char[] ch=data.toCharArray();
+		for(char a:ch) {
+			if(a>=48 && a<=57)
+			{
+				return("YES");
+			}
+		}
+		return("NO");
+	}
+	public static void main(String[] args) {
+		
+		NumFunc s = new NumFunc();
+		System.out.println(args[0]+"-->"+s.hasNum(args[0]));
+	}
+
+}
+
+
+output :
+
+hello-->NO
+hello1-->YES
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create a function to check all chars in the given string are in  UPPER case or not
+Signature of function is as follows:
+boolean isCapsOnly(String data)
+return true if all chars in arg data is in upper case
+
+package dxctesting;
+
+public class UppCase {
+	boolean Uppcheck(String data)
+	{
+		char[] ch=data.toCharArray();
+		for(char a:ch) {
+			if(a>=97 && a<=122)
+			{
+				return false;
+		    }
+		}
+		return true;
+	}
+	public static void main(String[] args) {
+		
+		UppCase ob = new UppCase();
+		System.out.println(args[0]+"-->"+ob.Uppcheck(args[0]));
+		
+
+	}
+
+}
+	
+output :
+HELLo-->false
+HELLO-->true
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-> create a function to count no of caps  chars in the given string
+Signature of function is as follows:
+int countCaps(String data)
+return no of caps chars
+
+package dxctesting;
+
+public class CountUpp{
+	int Countupp(String data)
+	{
+		char[] ch=data.toCharArray();
+		int cnt=0;
+		for(char a:ch) {
+			if(a>=65 && a<=90)
+			{
+				cnt++;
+		    }
+		}
+		return cnt;
+	}
+	public static void main(String[] args) {
+		
+		CountUpp ob = new CountUpp();
+		System.out.println("No of upper case in the string "+args[0]+" is  "+ob.Countupp(args[0]));
+		
+
+	}
+
+}
+	
+
+output :
+No of upper case in the string HELLO is  5
+No of upper case in the string TestinG is  2
