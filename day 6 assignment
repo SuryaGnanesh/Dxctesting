@@ -1,0 +1,161 @@
+Q1)   int sum(int... x){
+System.out.println("sum meth "+x[6]);
+return 10;
+}
+
+ // return the total sum of the args
+// print the max value
+// print the min
+// print no of ODD and even digits
+//print count numbers div by 3
+
+package dxc;
+
+public class SumFun {
+	int sum(int ...x)
+	{
+		int s=0,max=x[0],min=x[0],oc=0,ec=0,div_cnt=0;
+		for(int i:x)
+		{
+			s+=i;
+			if(max<i)
+			{
+				max=i;
+			}
+			else
+			{
+				min=i;
+			}
+			if(i%2==0)
+			{
+				ec++;
+			}
+			else
+			{
+				oc++;
+			}
+			if(i%3==0)
+			{
+				div_cnt++;
+			}
+			
+			
+		}	
+		System.out.println("max value -->"+max);
+		System.out.println("min value -->"+min);
+		System.out.println("even count -->"+ec);
+		System.out.println("odd count -->"+oc);
+		System.out.println("divisible by 3 count -->"div_cnt);
+		return(s);
+	}
+	public static void main(String[] args) {
+		SumFun s=new SumFun();
+		int total=s.sum(1,2,3,4,5);
+		System.out.println("Sum -->"+total);
+
+	}
+
+}
+
+
+output : 
+
+max value -->5
+min value -->1
+even count -->2
+odd count -->3
+divisible by 3 count -->1
+Sum -->15
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2) reverse a given string 
+
+Example :  Hello
+
+output: olleH
+
+package dxc;
+
+public class StrRev {
+	String ReverseStr(String st)
+	{
+		String s="";
+		char[] ch=st.toCharArray();
+		for(int i=ch.length-1;i>=0;i--) {
+			s+=ch[i];
+		}
+		return s;
+	}
+
+	public static void main(String[] args) {
+		String st = "Hello";
+		StrRev s = new StrRev();
+		System.out.println("Reversed String :"+s.ReverseStr(st));
+
+	}
+
+}
+ 
+ 
+output :
+Reversed String :olleH
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+q3) reverse a given string and maintain its caps position
+
+EX:  
+input ->  HeLloWorld
+output-DlRowOlleh
+
+input ->  MyJavaWorld
+output-DlRoWaVajym
+
+package dxc;
+
+public class StrRevCase {
+	String ReverseStrCase(String st)
+	{
+		String str="";
+		int j=0;
+		char[] ch=st.toCharArray();
+		for(int i=ch.length-1;i>=0;i--) {
+			if(ch[j]>=65 && ch[j]<=90)
+			{
+				if(ch[i]>=97 && ch[i]<=122)
+				{
+					str+=(char)(ch[i]-32);
+				}
+				else
+				{
+					str+=ch[i];
+				}
+			}
+			else
+			{
+				if(ch[i]>=65 && ch[i]<=90)
+				{
+					str+=(char)(ch[i]+32);
+				}
+				else
+				{
+					str+=ch[i];
+				}
+			}
+			j++;
+		}
+		
+		return str;
+	}
+
+	public static void main(String[] args) {
+		String st = "HelloWORLD";
+		StrRevCase s = new StrRevCase();
+		System.out.println("Reversed String :"+s.ReverseStrCase(st));
+	}
+}
+
+output :
+
+Reversed String :DlrowOLLEH
