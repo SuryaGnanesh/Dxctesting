@@ -1,0 +1,128 @@
+Note: create with all getter setter cont and to string
+
+// create showroom class which has cars in it . no duplicate car can be stored
+
+ShowRoom ,  Car ->
+name
+cars
+
+// create 2 showroom  objects ..
+
+// accept showroom name from the cmd and display cars in the showroom
+
+package dxc;
+
+public class ShowRoom {
+	private String name;
+	private String colour;
+	private String cost;
+	
+	public String getname()
+	{
+		return name;
+	}
+	public void setname(String name)
+	{
+		this.name=name;
+	}
+	public String getcolour()
+	{
+		return colour;
+	}
+	public void setcolour(String colour)
+	{
+		this.colour=colour;
+	}
+	public String getcost()
+	{
+		return cost;
+	}
+	public void setcost(String cost)
+	{
+		this.cost=cost;
+	}
+	
+	public String toString()
+	{
+		return("[ Car Name : "+name+",car colour : "+colour+",car price :"+cost+"]");
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+package dxc;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+
+public class CarDetails {
+
+	public static void main(String[] args) {
+		ShowRoom car1 = new ShowRoom();
+		ShowRoom car2 = new ShowRoom();
+		ShowRoom car3 = new ShowRoom();
+		ShowRoom car4 = new ShowRoom();
+		car1.setname("i10");
+		car1.setcolour("RED");
+		car1.setcost("10L");
+		car2.setname("i20");
+		car2.setcolour("BLUE");
+		car2.setcost("12L");
+		car3.setname("Venue");
+		car3.setcolour("GREEN");
+		car3.setcost("13L");
+		car4.setname("Verna");
+		car4.setcolour("WHITE");
+		car4.setcost("14L");
+		
+		HashSet<ShowRoom> showroom1=new HashSet<>();
+		showroom1.add(car1);
+		showroom1.add(car2);
+		showroom1.add(car3);
+		showroom1.add(car4);
+		showroom1.add(car4);
+		
+		
+		ShowRoom car5 = new ShowRoom();
+		ShowRoom car6 = new ShowRoom();
+		ShowRoom car7 = new ShowRoom();
+		ShowRoom car8 = new ShowRoom();
+		car5.setname("Swift");
+		car5.setcolour("BLACK");
+		car5.setcost("12L");
+		car6.setname("Dzire");
+		car6.setcolour("OCEAN BLUE");
+		car6.setcost("15L");
+		car7.setname("Alto");
+		car7.setcolour("MAROON");
+		car7.setcost("9L");
+		car8.setname("Vitara Brezza");
+		car8.setcolour("ORANGE");
+		car8.setcost("16L");
+	
+	HashSet<ShowRoom> showroom2=new HashSet<>();		
+		showroom2.add(car5);
+		showroom2.add(car6);
+		showroom2.add(car7);
+		showroom2.add(car8);
+		showroom2.add(car8);
+		//HashSet<ShowRoom> show2 = new HashSet<ShowRoom>(showroom2);
+	
+		
+	Map<String ,HashSet<ShowRoom>> Sr = new HashMap<String , HashSet<ShowRoom>>();
+	Sr.put("Hyundai",showroom1);
+	Sr.put("Maruti Suzuki",showroom2);
+	
+	Scanner sc = new Scanner(System.in);
+	String s_name=sc.nextLine();
+	HashSet<ShowRoom> elem = Sr.get(s_name);
+	for(ShowRoom i:elem)
+	{
+		System.out.println(i);
+	}
+		
+	}
+
+}
