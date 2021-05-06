@@ -1,0 +1,161 @@
+create a table Player
+-> Name
+-> role
+-> style
+-> team
+
+----->>
+ insert player recs into the table from a jdbc program ensure util, model ,dao and service are implemented in your code
+ 
+ package com.myproj.tablecreate;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.myproj.dbutil.Dbconn;
+
+public class TableCreate {
+	public static void main(String[] args)
+	{
+		try
+		{
+	
+		String sql="create table Player(Name varchar(20),role varchar(10),style varchar(20),team varchar(10))";
+		Connection con=Dbconn.dbConnect();
+		PreparedStatement stat=con.prepareStatement(sql);
+		stat.executeQuery();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+ ------------------------------------------------------------------------------------------------------------------------------------
+ 
+ package com.myproj.dbutil;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Dbconn {
+
+public static Connection dbConnect()
+{
+try{
+Class.forName("oracle.jdbc.OracleDriver");
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","gnanesh","ammadad");
+return con;
+}
+catch (Exception e) {
+e.printStackTrace();
+return null;
+}
+}
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+package com.myproj.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.myproj.dbutil.Dbconn;
+import com.myproj.model.Player;
+import com.myproj.model.Student;
+
+public class PlayerDao {
+	
+	public String PlayerData(Player player)
+	{
+		try
+		{
+		Connection con=Dbconn.dbConnect();
+		String sql1="insert into Player values(?,?,?,?)";
+		PreparedStatement stat1=con.prepareStatement(sql1);
+		stat1.setString(1, player.getname());
+		stat1.setString(2, player.getRole());
+		stat1.setString(3, player.getStyle());
+		stat1.setString(4, player.getTeam());
+		int st=stat1.executeUpdate();
+		if(st>0)
+		{
+			return "insertion done";
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "data cannot be inserted";
+	}
+  
+  ---------------------------------------------------------------------------------------------------------------------------------------
+  
+  package com.myproj.model;
+
+public class Player {
+	String name;
+	String role;
+	String style;
+	String team;
+	public String getname() {
+		return name;
+	}
+	public void setname(String name) {
+		this.name = name;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getStyle() {
+		return style;
+	}
+	public void setStyle(String style) {
+		this.style = style;
+	}
+	public String getTeam() {
+		return team;
+	}
+	public void setTeam(String team) {
+		this.team = team;
+	}
+	public Player(String name, String role, String style, String team) {
+		super();
+		this.name = name;
+		this.role = role;
+		this.style = style;
+		this.team = team;
+	}
+	@Override
+	public String toString() {
+		return "Player [Name=" + name + ", role=" + role + ", style=" + style + ", team=" + team + "]";
+	}
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+package com.myproj.service;
+
+import java.util.ArrayList;
+
+import com.myproj.dao.PlayerDao;
+import com.myproj.model.Player;
+
+public class PlayerService {
+
+	public static void main(String[] args) {
+		Player player=new Player("Dhawan","Batsman","left handed","India");
+		PlayerDao ps=new PlayerDao();
+		String s=ps.PlayerData(player);
+		System.out.println(s);
+	  }
+  }
